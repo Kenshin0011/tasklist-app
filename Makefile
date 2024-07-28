@@ -9,15 +9,11 @@ DC_EXEC := $(DC) exec --user root
 # Commands
 ##############################
 .PHONY: app-*
-#: アプリのセットアップを実行する
-app-setup:
-	@make app-sync
-#: アプリをネイティブプロジェクトに同期する
-app-sync:
-	@$(DC_EXEC_FRONT_NODE) sh -c "yes no | yarn cap sync"
+pod:
+	cd frontend/ios/App && pod install
 
-app-copy:
-	npx cap copy ios
+app-up:
+	cd frontend && ionic cap copy && ionic cap open ios
 
 .PHONY: docker-*
 #: Dockerイメージを構築する
