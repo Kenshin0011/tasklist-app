@@ -1,21 +1,22 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
 })
-export class HomePage implements OnInit {
-  public folder!: string;
-  private activatedRoute = inject(ActivatedRoute);
+export class HomePage {
   title = "タスク登録";
+  task!: string;
   tasks: {name: string}[] = [
     { name: 'タスク1' },
     { name: 'タスク2' },
   ];
   constructor() {}
 
-  ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+  addTask(): void {
+    this.tasks.push({
+      name: this.task,
+    });
+    this.task = '';
   }
 }
