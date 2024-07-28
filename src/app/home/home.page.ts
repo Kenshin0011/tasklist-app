@@ -13,10 +13,18 @@ export class HomePage {
   ];
   constructor() {}
 
+  ionViewWillEnter() {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      this.tasks = JSON.parse(storedTasks);
+    }
+  }
+
   addTask(): void {
     this.tasks.push({
       name: this.task,
     });
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
     this.task = '';
   }
 }
