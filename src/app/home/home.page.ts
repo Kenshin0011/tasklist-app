@@ -8,6 +8,11 @@ import { ActivatedRoute } from '@angular/router';
 export class HomePage implements OnInit {
   public folder!: string;
   private activatedRoute = inject(ActivatedRoute);
+  title = "タスク登録";
+  tasks: {name: string}[] = [
+    { name: 'タスク1' },
+    { name: 'タスク2' },
+  ];
   constructor() {}
 
   ngOnInit() {

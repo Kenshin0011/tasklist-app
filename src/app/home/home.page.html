@@ -1,9 +1,11 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-title>
+      {{title}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +18,8 @@
       <ion-button expand="block">追加</ion-button>
     </form>
     <ion-list>
-      <ion-item><ion-label>タスク1</ion-label></ion-item>
-      <ion-item><ion-label>タスク2</ion-label></ion-item>
+      <ion-item *ngFor="let t of tasks">
+        <ion-label>{{t.name}}</ion-label>
+      </ion-item>
     </ion-list>
 </ion-content>
